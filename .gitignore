@@ -1,2 +1,6 @@
+# All Node Modules
 node_modules
+# Enviroment variables
 auth-server/.env
+# Debugg logs from NPM
+npm-debug.log

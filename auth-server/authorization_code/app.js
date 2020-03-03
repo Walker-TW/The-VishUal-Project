@@ -5,6 +5,7 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
+const port = process.env.PORT || 8888
 var client_id = process.env.CLIENT_ID // Your client id
 var client_secret = process.env.CLIENT_SECRET // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
@@ -135,5 +136,5 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening on 8888');
-app.listen(8888);
+console.log('Listening at 8888');
+app.listen(port);
