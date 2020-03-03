@@ -34,10 +34,8 @@
       "last 1 safari version"
     ]
   },
-
-  "engines" : { 
+  "engines": {
     "node": "13.8.0",
-    "npm": "6.14.1"  
-  } 
-
+    "npm": "6.14.1"
+  }
 }

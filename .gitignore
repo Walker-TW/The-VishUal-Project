@@ -4,3 +4,5 @@ node_modules
 auth-server/.env
 # Debugg logs from NPM
 npm-debug.log
+# Personal Notes
+notes.txt
