@@ -1,2 +1,3 @@
 node_modules
 authCodes.js
+auth-server/.env
