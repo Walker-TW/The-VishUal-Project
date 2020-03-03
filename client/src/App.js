@@ -35,7 +35,8 @@ class App extends Component {
         this.setState({
           nowPlaying: {
             name: response.item.name,
-            image: response.item.album.images[1].url
+            image: response.item.album.images[1].url,
+            artist: response.item.artists[0].name
           }
         })
       }
@@ -49,6 +50,7 @@ class App extends Component {
       <button>Login But With Spotify </button>
       </a>
       <div> Now Playing: { this.state.nowPlaying.name} </div>
+      <div> By: { this.state.nowPlaying.artist} </div>
     <div>
     <img src={ this.state.nowPlaying.image} style={{ width: 100}}/>
     </div>
