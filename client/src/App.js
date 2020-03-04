@@ -20,14 +20,14 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.timerID = setInterval(
+    this.Interval = setInterval(
       () => this.getNowPlaying(),
-      2000
+      1000
     );
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.Interval);
   }
   getHashParams() {
     var hashParams = {};
