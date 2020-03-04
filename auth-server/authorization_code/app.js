@@ -1,5 +1,4 @@
 require('dotenv').config();
-var authCodes = require('../../authCodes');
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
