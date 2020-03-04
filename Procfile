@@ -1,1 +1,0 @@
-web: node auth-server/authorization_code/app.js; cd client; npm start
