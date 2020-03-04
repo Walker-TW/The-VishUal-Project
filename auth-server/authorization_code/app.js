@@ -9,6 +9,7 @@ const port = process.env.PORT || 8888
 var client_id = process.env.CLIENT_ID // Your client id
 var client_secret = process.env.CLIENT_SECRET // Your secret
 var redirect_uri = process.env.REDIRECT_URL ||  'http://localhost:8888/callback'; // Your redirect uri
+var redirect = process.env.REDIRECT || 'http://localhost:3000/#'
 
 /**
  * Generates a random string containing numbers and letters
@@ -97,7 +98,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
+        res.redirect(redirect +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
