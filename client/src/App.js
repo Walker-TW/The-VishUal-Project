@@ -60,4 +60,5 @@ class App extends Component {
   }
 }
 
+console.log("Now you have reached the client page")
 export default App;

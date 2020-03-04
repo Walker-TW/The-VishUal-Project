@@ -14,7 +14,7 @@
 
   "private": true,
   "scripts": {
-    "start": "node auth-server/authorization_code/app.js ",
+    "start": "node auth-server/authorization_code/app.js && cd client/ && npm start ",
     "build": "cd client/ && npm install && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
