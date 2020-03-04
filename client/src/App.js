@@ -38,6 +38,7 @@ class App extends Component {
     }
     return hashParams;
   }
+  
 
   getNowPlaying(){
     spotifyWebApi.getMyCurrentPlaybackState()
