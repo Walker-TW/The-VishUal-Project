@@ -2,7 +2,7 @@
 
 context('Window', () => {
   beforeEach(() => {
-    cy.visit('https://example.cypress.io/commands/window')
+    cy.visit('https://localhost:3000')
   })
 
   it('cy.window() - get the global window object', () => {
@@ -17,6 +17,6 @@ context('Window', () => {
 
   it('cy.title() - get the title', () => {
     // https://on.cypress.io/title
-    cy.title().should('include', 'Kitchen Sink')
+    cy.title().should('include', 'Login')
   })
 })
