@@ -130,7 +130,7 @@ app.get('/refresh_token', function(req, res) {
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
-      let uri = process.env.REDIRECT || 'http://localhost:3000'
+      let uri = process.env.REDIRECT_URL || 'http://localhost:3000'
       res.redirect(uri + '?access_token=' + access_token)
     }
   });
