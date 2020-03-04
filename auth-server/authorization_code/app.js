@@ -136,5 +136,5 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening at 8888');
+console.log(`Listening at ${port}`);
 app.listen(port);
