@@ -12,7 +12,8 @@ class App extends Component {
       loggedIn: params.access_token ? true : false,
       nowPlaying: {
         name: 'Not Checked',
-        image: ''
+        image: '',
+        id: ''
        }
      }
     if (params.access_token){
@@ -46,9 +47,9 @@ class App extends Component {
     return (
     <div className="App">
       <a href='http://localhost:8888'>
-      <button>Login But With Spotify </button>
+      <button class="test_btn">Login But With Spotify </button>
       </a>
-      <div> Now Playing: { this.state.nowPlaying.name} </div>
+      <div> Now Playing: { this.state.nowPlaying.id } </div>
     <div>
     <img src={ this.state.nowPlaying.image} style={{ width: 100}}/>
     </div>
