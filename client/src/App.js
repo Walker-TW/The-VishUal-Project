@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Spotify from 'spotify-web-api-js';
-import AudioFeatures from './audioFeatures.js'
 
 const spotifyWebApi = new Spotify();
 
@@ -16,7 +15,11 @@ class App extends Component {
         image: '',
         artist: '',
         id: ''
-       }
+       },
+       audioFeatures: {
+        danceability: ''
+      },
+      oAuth: params.access_token
      }
     if (params.access_token){
       spotifyWebApi.setAccessToken(params.access_token)
@@ -25,12 +28,13 @@ class App extends Component {
   componentDidMount() {
     this.Interval = setInterval(
       () => this.getNowPlaying(),
-      // 1000
+      //1000
     );
   }
   componentWillUnmount() {
     clearInterval(this.Interval);
   }
+  
 
   getHashParams() {
     var hashParams = {};
@@ -56,7 +60,29 @@ class App extends Component {
         })
       }
     )
+    this.getAudioFeatures(this.state.nowPlaying.id)
   }
+
+  getAudioFeatures(songID) {
+    const spotifyURL = "https://api.spotify.com/v1/audio-features/"
+    console.log(songID, 300)
+    console.log('woo', this.state.oAuth)
+    fetch((spotifyURL + songID), {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": ("Bearer " + this.state.oAuth)
+      }
+    })
+    .then((response) => {
+      this.setState({
+        audioFeatures: {
+          danceability: response.danceability
+        }
+      })
+    })
+  }
+  
 
   render() {
     return (
@@ -71,11 +97,19 @@ class App extends Component {
         <img src={ this.state.nowPlaying.image} style={{ width: 100}}/>
       </div>
       <div>
-        <AudioFeatures id={this.state.nowPlaying.name} oAuth={window.location.hash.substring(1)} />
-      </div>
+        <div> Selected song audio features: { this.state.audioFeatures.danceability }</div>      </div>
     </div>
     )
   }
 }
 
 export default App;
+
+
+// renderUpdate() {
+//   const songID = true;
+
+//   if (songID) {
+//     return <AudioFeatures id={this.state.nowPlaying.id} oAuth={window.location.hash.substring(1)} />
+//   }
+// }
