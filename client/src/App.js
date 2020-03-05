@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Spotify from 'spotify-web-api-js';
+import AudioFeatures from './audioFeatures.js'
 
 const spotifyWebApi = new Spotify();
 
@@ -12,7 +13,9 @@ class App extends Component {
       loggedIn: params.access_token ? true : false,
       nowPlaying: {
         name: 'Not Checked',
-        image: ''
+        image: '',
+        artist: '',
+        id: ''
        }
      }
     if (params.access_token){
@@ -22,7 +25,7 @@ class App extends Component {
   componentDidMount() {
     this.Interval = setInterval(
       () => this.getNowPlaying(),
-      1000
+      // 1000
     );
   }
   componentWillUnmount() {
@@ -36,6 +39,7 @@ class App extends Component {
     while ( e = r.exec(q)) {
        hashParams[e[1]] = decodeURIComponent(e[2]);
     }
+    console.log('hashparams', hashParams)
     return hashParams;
   }
 
@@ -65,6 +69,9 @@ class App extends Component {
       <div> Id: { this.state.nowPlaying.id} </div>
       <div>
         <img src={ this.state.nowPlaying.image} style={{ width: 100}}/>
+      </div>
+      <div>
+        <AudioFeatures id={this.state.nowPlaying.name} oAuth={window.location.hash.substring(1)} />
       </div>
     </div>
     )
